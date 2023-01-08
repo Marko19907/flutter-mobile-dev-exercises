@@ -1,0 +1,25 @@
+name: exercise_e4
+description: Exercise E4
+
+publish_to: 'none'
+
+version: 1.0.0
+
+environment:
+  sdk: ">=2.17.5 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  golden_toolkit: ^0.13.0
+  flutter_lints: ^2.0.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - images/chuck.jpg

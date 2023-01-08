@@ -1,0 +1,44 @@
+name: Flutter build
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix: { dir: [
+        'exercise1',
+        'exercise2',
+        'exercise3',
+        'exercise4',
+        'exercise5',
+        'exercise6',
+        'exercise7',
+      ] }
+    
+    steps:
+      - name: ⬇ Checkout repo
+        uses: actions/checkout@v3
+        
+      - name: 🏗 Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+        
+      - name: 📦 Install dependencies
+        working-directory: ${{ matrix.dir }}
+        run: flutter pub get
+        
+      - name: 📋 Run tests
+        working-directory: ${{ matrix.dir }}
+        run: flutter test
+      
+      - name: 👷 Build app
+        if: ${{ matrix.dir != 'exercise2' }} # --> exercise2 is not a flutter project, so exclude it
+        working-directory: ${{ matrix.dir }}
+        run: flutter build apk
