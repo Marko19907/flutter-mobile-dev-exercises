@@ -1,4 +1,4 @@
-name: Flutter build
+name: Windows build
 
 on:
   workflow_dispatch:
@@ -9,7 +9,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     strategy:
       matrix: { dir: [
         'exercise1',
@@ -37,8 +37,21 @@ jobs:
       - name: 📋 Run tests
         working-directory: ${{ matrix.dir }}
         run: flutter test
-      
-      - name: 👷 Build app
+        
+      - name: 📦 Add windows support
         if: ${{ matrix.dir != 'exercise2' }} # --> exercise2 is not a flutter project, so exclude it
         working-directory: ${{ matrix.dir }}
-        run: flutter build apk
+        run: flutter create --platforms=windows .
+      
+      - name: 👷 Build windows exe
+        if: ${{ matrix.dir != 'exercise2' }} # --> exercise2 is not a flutter project, so exclude it
+        working-directory: ${{ matrix.dir }}
+        run: flutter build windows
+        
+      - name: 📱 Upload binary
+        uses: actions/upload-artifact@v3
+        with:
+          name: windows-app-${{ matrix.dir }}
+          retention-days: 7
+          path: |
+            ${{ matrix.dir }}/build/windows/runner/Release/
