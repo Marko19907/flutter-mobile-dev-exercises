@@ -4,7 +4,16 @@ This repository contains the mandatory exercises from NTNU's "Mobile application
 
 These exercises are mandatory but do not count towards the final grade in the subject.
 
-[![Flutter build](https://github.com/Marko19907/flutter-mobile-dev-exercises/actions/workflows/build.yml/badge.svg?branch=main)](https://github.com/Marko19907/flutter-mobile-dev-exercises/actions/workflows/build.yml)
+
+<p>
+  <a href="https://github.com/Marko19907/flutter-mobile-dev-exercises/actions/workflows/android_build.yml">
+    <img src="https://github.com/Marko19907/flutter-mobile-dev-exercises/actions/workflows/android_build.yml/badge.svg" alt="Android build status">
+  </a>
+  <a href="https://github.com/Marko19907/flutter-mobile-dev-exercises/actions/workflows/windows_build.yml">
+    <img src="https://github.com/Marko19907/flutter-mobile-dev-exercises/actions/workflows/windows_build.yml/badge.svg" alt="Windows build status">
+  </a>
+</p>
+
 
 
 ## Getting Started
